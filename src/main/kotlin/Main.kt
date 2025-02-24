@@ -1,16 +1,64 @@
 package org.example
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
-    //Cambio para probar el git
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+    val name = "Juan Pablo Cartin Esquivel-JP"
+    println("Hello I'm, " + name + "!")
+
+    val scanner = java.util.Scanner(System.`in`)
+
+    var firNum: Double
+    var secNum: Double
+    var operation: String
+
+    println("Your personal calculator")
+
+    while (true) {
+        print("Enter the first number: ")
+        if (scanner.hasNextDouble()) {
+            firNum = scanner.nextDouble()
+            break
+        } else {
+            println("Not valid")
+            scanner.next() // Esto limpia
+        }
     }
+
+    while (true) {
+        print("Enter the operation (+, -, *, /): ")
+        operation = scanner.next()
+
+        if (operation == "+" || operation == "-" || operation == "*" || operation == "/") {
+            break
+        } else {
+            println("ERROR- valid operation: (+, -, *, /).")
+        }
+    }
+
+    while (true) {
+        print("Enter the second number: ")
+        if (scanner.hasNextDouble()) {
+            secNum = scanner.nextDouble()
+            break
+        } else {
+            println("Not valid")
+            scanner.next()
+        }
+    }
+
+    val result = when (operation) {
+        "+" -> firNum + secNum
+        "-" -> firNum - secNum
+        "*" -> firNum * secNum
+        "/" -> if (secNum != 0.0) firNum / secNum else {
+            println("ERROR- divide by zero")
+            return
+        }
+        else -> {
+            println("Invalid operation")
+            return
+        }
+    }
+
+    println(" $firNum $operation $secNum = $result")
+    //Todo esto fue porque no lei el README antes de empezar
 }
